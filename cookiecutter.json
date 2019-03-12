@@ -1,7 +1,7 @@
 {
     "molecule_directory": "molecule",
-    "dependency_name": "OVERRIDEN",
-    "driver_name": "OVERRIDEN",
+    "dependency_name": "galaxy",
+    "driver_name": "vmware",
     "lint_name": "yamllint",
     "provisioner_name": "ansible",
     "provisioner_lint_name": "ansible-lint",
