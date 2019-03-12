@@ -6,20 +6,12 @@
   gather_facts: false
   no_log: "{{ not (lookup('env', 'MOLECULE_DEBUG') | bool or molecule_yml.provisioner.log|default(false) | bool) }}"
   vars:
-    # I don't know how to do this per instance yet
-    ssh_user: admin    # This is used for instance config
-    ssh_pass: admin    # This is used for initial authorized_keys setup
-    ssh_port: 22       # This is used for instance config
-
     esxi_hostname: "{{molecule_yml.vmware.esxi_hostname|default(omit)}}"
     cluster: "{{molecule_yml.vmware.cluster|default(omit)}}"
     vmware_datacenter: "{{molecule_yml.vmware.datacenter}}"
     vmware_datastore: "{{molecule_yml.vmware.datastore}}"
     #vm_network_name: "{{molecule_yml.vmware.network_name|default('VM Network')}}"
     resource_pool: "{{molecule_yml.vmware.resource_pool|default('Resources')}}"
-
-    ssh_path: "{{ lookup('env', 'MOLECULE_EPHEMERAL_DIRECTORY') }}/ssh_key"
-    authorized_keys: "{{ lookup('env', 'MOLECULE_EPHEMERAL_DIRECTORY') }}/.ssh/authorized_keys"
   environment:
     VMWARE_USER: "{{ lookup('env', 'VMWARE_USER') }}"
     VMWARE_PASSWORD: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
@@ -52,7 +44,6 @@
       with_items: "{{ server.results }}"
 
     # Mandatory configuration for Molecule to function.
-
     - name: Populate instance config
       set_fact:
         instance_conf: {}

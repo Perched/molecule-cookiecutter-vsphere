@@ -22,6 +22,12 @@ Usage
 
 ```bash   
 molecule init --url gh:dcode/molecule-cookiecutter-vsphere
+
+# Edit molecule/default/molecule.yml to your needs
+# Edit molecule/default/create.yml to change the `ssh_user` and `ssh_pass` until I find a fix
+# Add testinfra tests to molecule/default/tests dir
+
+molecule test
 ```
 
 The [molecule documentation][molecule_docs] doesn't cover this super well, but
