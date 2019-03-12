@@ -23,12 +23,11 @@ platforms:
     template_pattern: '^centos-7'
 provisioner:
   name: {{ cookiecutter.provisioner_name }}
+  log: True
   inventory:
     host_vars:
       instance-1:
-        ssh_user: admin
-        ssh_pass: admin
-        ssh_port: 22
+        foo: bar
   lint:
     name: {{ cookiecutter.provisioner_lint_name }}
 

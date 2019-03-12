@@ -6,9 +6,10 @@
   gather_facts: false
   no_log: "{{ not (lookup('env', 'MOLECULE_DEBUG') | bool or molecule_yml.provisioner.log|default(false) | bool) }}"
   vars:
-    ssh_user: admin
-    ssh_port: 22
-    ssh_pass: admin
+    # I don't know how to do this per instance yet
+    ssh_user: admin    # This is used for instance config
+    ssh_pass: admin    # This is used for initial authorized_keys setup
+    ssh_port: 22       # This is used for instance config
 
     esxi_hostname: "{{molecule_yml.vmware.esxi_hostname|default(omit)}}"
     cluster: "{{molecule_yml.vmware.cluster|default(omit)}}"
@@ -24,7 +25,7 @@
     VMWARE_PASSWORD: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
     VMWARE_HOST: "{{ molecule_yml.vmware.vcenter_address }}"
     VMWARE_PORT: "{{ molecule_yml.vmware.vcenter_port | default('443') }}"
-    VMWARE_VALIDATE_CERTS: "{{ molecule_yml.vmware.vaildate_certs |  default('Yes') }}"
+    VMWARE_VALIDATE_CERTS: "{{ molecule_yml.vmware.validate_certs |  default('Yes') }}"
 
   tasks:
     - name: Create SSH key
