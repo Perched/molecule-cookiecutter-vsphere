@@ -1,0 +1,13 @@
+{
+    "molecule_directory": "molecule",
+    "dependency_name": "OVERRIDEN",
+    "driver_name": "OVERRIDEN",
+    "lint_name": "yamllint",
+    "provisioner_name": "ansible",
+    "provisioner_lint_name": "ansible-lint",
+    "scenario_name": "default",
+    "role_name": "OVERRIDEN",
+    "verifier_name": "testinfra",
+    "verifier_lint_name": "flake8",
+    "verifier_directory": "tests"
+}

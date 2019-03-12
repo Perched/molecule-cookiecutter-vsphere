@@ -1,0 +1,38 @@
+---
+dependency:
+  name: {{ cookiecutter.dependency_name }}
+driver:
+  name: delegated
+  options:
+    managed: True
+vmware:
+  datastore: "VM Store"
+  datacenter: "ha-datacenter"
+  esxi_hostname: 192.168.0.10   # Required if cluster isn't set
+  # cluster: cluster              # Required if esxi_hostname isn't set
+  vcenter_address: 192.168.0.11 # Required
+  validate_certs: True
+  resource_pool: "Resources"
+lint:
+  name: {{ cookiecutter.lint_name }}
+platforms:
+  - name: instance-1
+    memory: 512
+    cpu: 1
+    disk_size: 25
+    template_pattern: '^centos-7'
+provisioner:
+  name: {{ cookiecutter.provisioner_name }}
+  inventory:
+    host_vars:
+      instance-1:
+        ssh_user: admin
+        ssh_pass: admin
+        ssh_port: 22
+  lint:
+    name: {{ cookiecutter.provisioner_lint_name }}
+
+verifier:
+  name: {{ cookiecutter.verifier_name }}
+  lint:
+    name: {{ cookiecutter.verifier_lint_name }}
