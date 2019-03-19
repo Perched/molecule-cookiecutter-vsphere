@@ -1,0 +1,6 @@
+ansible
+molecule
+docker
+shade
+python-vagrant
+pyvmomi
