@@ -34,4 +34,26 @@ The [molecule documentation][molecule_docs] doesn't cover this super well, but
 the above example will initialize a test scenario for the options that you give
 it (it will prompt you).
 
+Docker Usage
+===============
+
+[![Docker Repository on Quay](https://quay.io/repository/dcode/molecule-vsphere/status "Docker Repository on Quay")](https://quay.io/repository/dcode/molecule-vsphere)
+
+
+In your project with top-level molecule directory, create a file `.env.yml` with the credentials for vSphere:
+
+```yaml
+---
+VMWARE_USER: "myuser@vsphere.local"
+VMWARE_PASSWORD: "its-a-secret-to-everybody"
+```
+
+Then to run all the tests, simply do:
+
+```bash
+docker run --rm -ti -v $(pwd):/src  \
+   -w /src quay.io/dcode/molecule-vsphere test --all
+```
+
+
 [molecule_docs]: https://molecule.readthedocs.io/en/latest/
