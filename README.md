@@ -21,7 +21,7 @@ Usage
 =======
 
 ```bash   
-molecule init --url gh:dcode/molecule-cookiecutter-vsphere
+molecule init --url gh:perched/molecule-cookiecutter-vsphere
 
 # Edit molecule/default/molecule.yml to your needs
 # Edit molecule/default/create.yml to change the `ssh_user` and `ssh_pass` until I find a fix
@@ -37,7 +37,7 @@ it (it will prompt you).
 Docker Usage
 ===============
 
-[![Docker Repository on Quay](https://quay.io/repository/dcode/molecule-vsphere/status "Docker Repository on Quay")](https://quay.io/repository/dcode/molecule-vsphere)
+[![Docker Repository on Quay](https://quay.io/repository/perched/molecule-vsphere/status "Docker Repository on Quay")](https://quay.io/repository/perched/molecule-vsphere)
 
 
 In your project with top-level molecule directory, create a file `.env.yml` with the credentials for vSphere:
@@ -52,7 +52,7 @@ Then to run all the tests, simply do:
 
 ```bash
 docker run --rm -ti -v $(pwd):/src  \
-   -w /src quay.io/dcode/molecule-vsphere test --all
+   -w /src quay.io/perched/molecule-vsphere test --all
 ```
 
 
