@@ -7,6 +7,6 @@ RUN dnf -y install python3-pip openssl-devel libffi-devel gcc python3-devel /usr
 
 ADD . /molecule
 
-RUN cd /molecule; pip3 install -r requirements.txt
+RUN cd /molecule; pip3 install -r requirements.txt; mv -v ca-chain.pem /etc/pki/ca-trust/source/anchors/ && update-ca-trust
 
 ENTRYPOINT ["molecule"]
